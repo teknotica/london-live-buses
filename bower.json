@@ -1,0 +1,28 @@
+{
+  "name": "london-live-buses",
+  "description": "Angular App to test the Transport API",
+  "main": "",
+  "authors": [
+    "Silvia Rebelo"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "AngularJS"
+  ],
+  "homepage": "https://github.com/teknotica/london-live-buses",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "angular": "~1.4.8",
+    "angular-ui-router": "~0.2.15",
+    "bootstrap": "~3.3.6",
+    "ngmap": "~1.16.7"
+  }
+}

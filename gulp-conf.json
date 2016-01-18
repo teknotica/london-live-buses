@@ -1,0 +1,41 @@
+{
+    "clean": {
+        "css": [
+            "public/css/*"
+        ],
+        "js": [
+            "public/js/*",
+            "!public/js/vendor/**"
+        ]
+    },
+    "sass": {
+        "src": "./public/app/sass/*.scss",
+        "watch": ["./public/app/sass/**/*.scss"],
+        "dest": "./public/css"
+    },
+    "templates": {
+        "src": ["./public/app/pages/*.html"],
+        "module": "busesLiveApp",
+        "filename": "templates.js",
+        "standalone": false,
+        "dest": "./public/js"
+    },
+    "scripts": {
+        "vendor": [
+            "public/bower_components/angular/angular.js",
+            "public/bower_components/angular-ui-router/release/angular-ui-router.js",
+            "public/bower_components/ngmap/build/scripts/ng-map.js"
+        ],
+        "src": [
+            "public/app/js/app.js",
+            "public/app/js/services/*.js",
+            "public/app/js/directives/*.js",
+            "public/app/js/controllers/*.js"
+        ]
+    },
+    "livereload": {
+        "basePath": "./public/",
+        "reloadPage": "index.html",
+        "port": 35729
+    }
+}

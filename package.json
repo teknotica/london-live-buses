@@ -1,0 +1,30 @@
+{
+  "name": "london-live-buses",
+  "version": "1.0.0",
+  "description": "Angular App to test the Transport API",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/teknotica/london-live-buses.git"
+  },
+  "keywords": [
+    "AngularJS"
+  ],
+  "author": "Silvia Rebelo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/teknotica/london-live-buses/issues"
+  },
+  "homepage": "https://github.com/teknotica/london-live-buses#readme",
+  "dependencies": {
+    "express": "^4.13.3",
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-connect": "^2.3.1",
+    "gulp-ng-annotate": "^1.1.0",
+    "gulp-rimraf": "^0.2.0",
+    "gulp-sass": "^2.1.1",
+    "gulp-uglify": "^1.5.1",
+    "gulp-watch": "^4.3.5",
+    "livereload": "^0.4.0"
+  }
+}

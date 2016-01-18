@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html class="no-js" ng-app="busesLiveApp">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>London Live Buses</title>
+        <meta name="description" content="Angular demo for Transport API">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link href='http://fonts.googleapis.com/css?family=Oswald:400,300' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="css/main.css">
+        <!--[if lt IE 9]>
+        <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <script>window.html5 || document.write('<script src="js/vendor/html5shiv.js"><\/script>')</script>
+        <![endif]-->
+        </head>
+        <body ng-controller="mainCtrl" ng-cloak>
+            <div class="container">
+                <section id="header">
+                    <h1>London Live Buses</h1>
+                    <p>Please insert a postcode or an address to search for the nearest bus stops</p>
+                    <input id="postcode" ng-model="searchText" type="text" class="form-control" placeholder="Postcode or Address" ng-change="clearNotification()">
+                    <button class="btn" ng-click="getMapsCoordinates(searchText)">Search</button>
+                    <div class="message" ng-show="message">{{message}}</div>
+                </section>
+                <div id="stops-grid" class="row">
+                    <div class="map col-md-5">
+                        <map zoom="8" center="[{{mapCenter.lat}}, {{mapCenter.lng}}]">
+                            <marker ng-repeat="stop in nearbyStops" position="{{stop.coordinates}}" title="" icon="{{marker}}" on-click="showInfoWindow(event, 'marker-info', {details: stop.info })"></marker>
+                            <info-window id="marker-info">
+                                <div>
+                                    {{details.name}} - {{details.indicator}}
+                                </div>
+                            </info-window>
+                        </map>
+                    </div>
+                    <div class="bus-info col-md-7">
+                        <div class="col-md-6 stops-list" ng-show="nearbyStops">
+                            <div class="col-inner">
+                                <h2>Bus stops nearest <br> <em>{{searchText}}</em></h2>
+                                <ul>
+                                    <li ng-repeat="stop in nearbyStops">
+                                        <a ng-click="getLiveBusInfo(stop.info)">
+                                        {{stop.info.name}} <br> ({{stop.info.indicator}})
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-6 stops-departures" ng-show="busDepartures">
+                            <div class="col-inner">
+                                <h2>Departures for <br> <em>{{selectedBusStop.name}} ({{selectedBusStop.indicator}})</em></h2>
+                                <ul>
+                                    <li ng-repeat="(busNumber, busDeparturesObj) in busDepartures">
+                                        <em><strong>Bus {{busNumber}}</strong></em>
+                                        <ul>
+                                            <li ng-repeat="busDepartures in busDeparturesObj">
+                                                Direction: {{busDepartures.direction}}
+                                                <br> Departure time: {{busDepartures.expected_departure_time}}
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script src="http://maps.google.com/maps/api/js"></script>
+            <script src="js/main.js"></script>
+        </body>
+    </html>
